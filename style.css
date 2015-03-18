@@ -1,0 +1,408 @@
+/* General Styles */
+
+html {
+  min-height:100%;
+}
+
+body {
+  /* Sure, we could use an image gradient, but that wouldn't stretch the size of the page */
+  /* without doing some things we probably don't want. */
+  background:linear-gradient(rgba(255,255,255,1),rgba(200,200,200,1)) no-repeat fixed; 
+  color:#333;
+  font-family:'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  height:60px;
+}
+
+h2,h3,h4,h5,h6 {
+  font-family:'Myriad Pro', Helvetica, Arial, sans-serif;
+}
+
+a {
+  text-decoration:none;
+  color:#de1d0b;
+}
+
+a:hover {
+  text-decoration:underline;
+  color:#900;
+}
+
+h1 {
+  font-family:'Myriad Pro', Helvetica, Arial, sans-serif;
+  text-shadow:-2px 3px 1px #eee;
+  text-align:center;
+  font-size:36px;
+  margin:0;
+}
+
+article {
+  width:85%;
+  min-width:720px;
+  max-width:1024px;
+  margin:20px auto;
+  background:#fbfbfb;
+  padding:20px;
+  box-shadow:0 0 20px rgba(0,0,0,.2);
+  border-radius:5px;
+}
+
+nav {
+  font-size:14px;
+  position:relative;
+}
+
+footer {
+  text-align:center;
+  font-size:11px;
+  padding-bottom:10px;
+}
+
+/* Interface Elements */
+
+nav input {
+  border-radius:5px;
+  border:solid 1px #666;
+  padding:2px 10px;
+  display:block;
+  background:#ddd;
+  position:absolute;
+  right:20px;
+  top:10px;
+}
+
+.button {
+  width:180px;
+  text-align:center;
+  border:solid 1px #245cbb;
+  box-shadow:0 0 5px #333,inset 0 1px 1px #fff;
+  padding:10px;
+  margin-right:20px;
+  background:#7aa8f5;
+  color:#fff;
+  text-shadow:1px 1px 1px #000;
+  background-image: linear-gradient(#7aa8f5, #245cbb);
+  border-radius:4px;
+  position:relative;
+  cursor:pointer;
+  margin:3px auto;
+}
+
+.button:hover {
+  background-image: linear-gradient(#b8d2fe, #245cbb);
+  box-shadow:0 0 5px #333,inset 0 0 1px #fff;
+  color:#fff;
+}
+
+.button:active {
+  box-shadow:0 0 1px #000;
+  top:-1px;
+}
+
+.comment {
+  margin:10px 0;
+  background:#fff;
+  padding:10px;
+  box-shadow:0 0 10px rgba(0,0,0,.2);
+  transition:box-shadow .2s, background .2s;
+  clear:both;
+}
+
+.comment .userPortrait {
+  float:left;
+  margin:0 10px 0 0;
+  /* A little trickery to make this look like it's a completely */
+  /* dynamically generated image and not just a css color trick. */
+
+  /* Also, 10 points to whoever can guess which silicon valley */
+  /* entrepreneur that I used to create the main silhouette. */
+  box-shadow:inset 0 0 15px rgba(0,0,0,.5);
+}
+
+.comment .userName {
+  font-size:16px;
+  text-shadow:-1px 1px 1px #eee;
+  font-weight:bold;
+  display:block;
+}
+
+.comment:hover {
+  box-shadow:0 0 1px rgba(0,0,0,.3);
+  background:#eef;
+  transition:background .2s linear;
+}
+
+.comment .childComments .comment:hover { /* comment... within a comment... */
+  background:#ddf;
+}
+
+.comment .childComments .comment .childComments .comment:hover { /* within a comment... */
+  background:#ccf;
+}
+
+.comment .childComments .comment .childComments .comment .childComments .comment:hover { /* we need to go deeper... */
+  background:#bbf;
+}
+
+.childComments .comment {
+  height:14px;
+  overflow:hidden;
+  cursor:pointer;
+}
+
+.childComments .comment::before {
+  content:"View Reply";
+  display:block;
+  margin-bottom:10px;
+}
+
+.childComments .comment.open {
+  cursor:default;
+  height:auto;
+}
+
+.childComments .comment.open::before {
+  content:'';
+  display:none;
+}
+
+/* Generated elements and customized pieces */
+
+aside {
+  width:720px;
+  margin-right:-380px;
+  height:70%;
+  background:#fafafa;
+  padding:20px;
+  box-shadow:0 0 10px rgba(0,0,0,.2);
+  border-radius:5px;
+  position:fixed;
+  border:solid 2px #666;
+  top:10%;
+  right:50%;
+  overflow-y: auto;
+}
+
+aside .closeButton {
+  cursor:pointer;
+  position:fixed;
+  top:8.5%;
+  right:50%;
+  margin-right:-390px;
+  padding:5px;
+  vertical-align:middle;
+  width:20px;
+  height:20px;
+  border-radius:15px;
+  text-align:center;
+  background-color:#000;
+  color:#fff;
+  background-image:linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,.1));
+  box-shadow:0 0 10px rgba(0,0,0,.4);
+  text-shadow:0px -1px 0px #000; 
+  font-weight:bold;
+}
+
+.searchResults {
+  background-color:#de1d0b;
+  color:#fff;
+  border:solid 1px #000;
+  padding:1px;
+  margin:-2px; /* to make up for the border/padding and prevent re-flow */
+  border-radius:5px;
+}
+
+.date {
+  display:block;
+  border-bottom:1px solid #333;
+  padding-bottom:4px;
+}
+
+.commentContent {
+  border-top:1px solid #eee;
+}
+
+/* I got away without a lot of the ExtJS component styles, but I want to use the */
+/* setLoading method so I needed to style the appropriate generated classes below */
+
+.x-mask-loading {
+  background-color:#bbb;
+  background-color:rgba(0,0,0,.3);
+  text-shadow:1px 1px 1px #333;
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+}
+
+.x-mask-msg-text {
+  position:absolute;
+  border:solid 2px #fff;
+  color:#eee;
+  top:50%;
+  left:50%;
+  width:600px;
+  height:200px;
+  padding-top:120px;
+  margin-left:-300px;
+  margin-top:-200px;
+  background-image:linear-gradient(rgba(0,0,0,1),rgba(0,0,0,.5));
+  text-align:center;
+  vertical-align:middle;
+  box-shadow:0 0 30px rgba(0,0,0,.6);
+  border-radius:20px;
+  font-size:38px;
+}
+
+/* Webkit-only customized scrollbar for the documentation */
+
+aside::-webkit-scrollbar-track {
+  background: none;
+  margin-top:20px;
+}
+
+aside::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+aside::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 5px;
+}
+
+/* Mobile browsers held at landscape (note these styles cascade down to the lower resolution) */
+@media screen and (max-width : 800px) {
+  article {
+    width:100%;
+    min-width:420px;
+    margin:0;
+    padding:0;
+    min-height:100px;
+  }
+
+  .comment {
+    font-size:14px;
+  }
+
+  header {
+    width:100%;
+    background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.2));
+    background-color:#aaa;
+    height:40px;
+    box-shadow:inset 0 0 5px rgba(0,0,0,.3);
+    padding:0;
+  }
+
+  h1 {
+    font-size:24px;
+    color:#fdfdfd;
+    text-shadow:-2px 3px 1px #333;
+  }
+
+  nav input {
+    top:12px;
+  }
+
+  nav {
+    height:40px;
+  }
+
+  .userPortrait {
+    width:36px;
+  }
+
+  .button {
+    font-size:12px;
+    width:140px;
+    position:absolute;
+    top:3px;
+    left:5%;
+  }
+
+  .button:active {
+    top:2px;
+    position:absolute;
+  }
+
+  .comment .date, .comment .userName {
+    display:inline;
+    border:0;
+  }
+
+  .date {
+    font-size:12px;
+    padding-left:20px;
+  }
+
+  .childComments .comment {
+    height:10px;
+  }
+
+  .childComments .comment::before {
+    font-size:12px;
+    margin-top:-2px; /* negating padding without adjusting parent now that this is a smaller font-size*/
+  }
+
+  .x-mask-msg-text {
+    width:300px;
+    height:100px;
+    padding-top:60px;
+    margin-left:-150px;
+    margin-top:-100px;
+    font-size:22px;
+    border-radius:10px;
+  }
+
+  aside {
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+    box-shadow:none;
+    top:0;
+    left:0;
+    border:0;
+    border-radius:0;
+    font-size:12px;
+  }
+
+  aside .closeButton {
+    top:0;
+    right:10px;
+    margin:0;
+    padding:2px;
+  }
+
+}
+
+/* Mobile browsers held at portrait */
+@media screen and (max-width : 500px) {
+  h1 {
+    font-size:19px;
+    padding-top:4px;
+  }
+
+  article {
+    min-width:345px;
+  }
+
+  nav .button {
+    left:1px;
+  }
+
+  nav input {
+    right:1px;
+  }
+
+  footer {
+    font-size:10px;
+  }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Comment Display System (CDS) </title>
+    <meta charset="utf-8"> 
+     <meta name="viewport" content="width=100%,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" /> <!-- for mobile sheets -->
+    <script type="text/javascript" charset="utf-8" src="http://cdn.sencha.io/ext-4.2.0-gpl/ext-all.js"></script> <!-- charset in case cdn headers are weird -->
+    <script type="text/javascript" src="util.js"></script>
+    <script type="text/javascript" src="markdown.js"></script>
+    <script type="text/javascript" src="Models.js"></script>
+    <script type="text/javascript" src="Stores.js"></script>
+    <script type="text/javascript" src="Controllers.js"></script>
+    <script type="text/javascript" src="Views.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script type="text/javascript">
+     Ext.onReady(function() {
+      Ext.application({
+        name: 'CDS',
+        models: ['CDS.model.Comment', 'CDS.model.User'],
+        controllers: ['Comments'],
+        launch: function() {
+          // the majority of our logic is going to happen in the controller, but additional loading stuff can happen here
+        }
+      });
+    });
+    </script>
+
+    <article id="comments">
+    <header>
+      <h1>Comment Display System (CDS)</h1>
+    </header>
+    <nav><div id="buttonHolder"></div><div id="searchHolder"></div></nav>
+    </article>
+    <footer>
+      Designed and Developed by <a href="http://www.nathanstpierre.com">Nathan St. Pierre</a>. View <a href="javascript:void(0)" id="readme">readme</a> (or <a target="_blank" href="README.md">raw file</a>).
+    </footer>
+  </body>
+</html>
